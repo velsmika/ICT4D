@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+    <menu id="main" dtmf="true">
+        <prompt>What would you like to do?</prompt>
+        <choice next="#menuEsbSeeds"> Exchange, sell/buy seeds </choice>
+        <choice next="#menuMessages"> Messages </choice>
+        <choice next="#menuGroups"> groups </choice>
+        <nomatch>Please say one of <enumerate/></nomatch>
+    </menu>
+
+    <!--
+        Menu for Exchange, sell/buy seeds.
+    -->
+    <menu id="menuEsbSeeds" dtmf="true">
+
+    </menu>
+
+    <!--
+        Menu for messages.
+    -->
+    <menu id="menuMessages" dtmf="true">
+
+    </menu>
+
+    <!--
+        Menu for groups.
+    -->
+    <menu id="menuGroups" dtmf="true">
+
+    </menu>
+</vxml>
