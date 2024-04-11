@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<vxml version="2.0">
+
+<form id="menu0">
+   <block>
+   	<prompt bargein="true">You have selected that you want to buy, sell, or exchange seeds.</prompt>
+	<goto next="#main"/>
+   </block>
+</form>
+
+<menu id="main" dtmf="true">
+    <prompt>Please select one of the following categories:<enumerate/> </prompt>
+    <choice dtmf="1" next="buying_seeds.xml">Buying Seeds</choice>
+    <choice dtmf="2" next="selling_seeds.xml">Selling seeds.</choice>
+    <choice dtmf="3" next="exchanging_seeds.xml">Exchanging seeds.</choice>
+    <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+    <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+</menu>
+
+</vxml>
