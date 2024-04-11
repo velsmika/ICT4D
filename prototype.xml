@@ -5,35 +5,38 @@
         Main menu.
     -->
     <menu id="main" dtmf="true">
-        <prompt>What would you like to do?</prompt>
+        <prompt>What would you like to do? <enumerate/>
+        </prompt>
         <choice next="#menuEsbSeeds"> Exchange, sell/buy seeds </choice>
         <choice next="#menuMessages"> Messages </choice>
         <choice next="#menuGroups"> groups </choice>
-        <nomatch>Please say one of <enumerate/></nomatch>
+        <nomatch>Please say one of <enumerate/>
+        </nomatch>
     </menu>
 
     <!--
         Menu for Exchange, sell/buy seeds.
     -->
     <menu id="menuEsbSeeds" dtmf="true">
-
+        <choice next="#menuMessages">temp choice</choice>
     </menu>
 
     <!--
         Menu for messages.
     -->
     <menu id="menuMessages" dtmf="true">
-        <prompt>Where would you like to go?</prompt>
+        <prompt>Where would you like to go?<enumerate/></prompt>
         <choice next="#receivedMessages">Received messages</choice>
         <choice next="#leaveMessages">Leave messages</choice>
-        <nomatch>Please say one of <enumerate/></nomatch>
+        <nomatch>Please say one of <enumerate/>
+        </nomatch>
     </menu>
 
     <!--
         Menu for groups.
     -->
     <menu id="menuGroups" dtmf="true">
-
+        <choice next="#menuMessages">temp choice</choice>
     </menu>
 
     <!--Forms-->
@@ -41,21 +44,15 @@
         Forms for messages
     -->
     <form id="receivedMessages">
-        <prompt>
-            You received 1 message from Mark, yesterday at 10:00 AM.
-        </prompt>
-        <field name="confirm">
-            <grammar type="application/srgs+xml" src="/grammars/boolean.grxml"/>
+        <field name="confirm" type="boolean">
             <prompt>
-                Would you like to hear the message?
-            </prompt>
-            <prompt>
-                To hear it, say yes. To not hear it, say no.
+                    You received 1 message from Mark, yesterday at 10:00 AM. Would you like to hear the message?
+                    To hear it, say yes. To not hear it, say no.
             </prompt>
             <filled>
                 <if cond="confirm">
                     <prompt>
-                        <audio expr="trading.mp3"/>
+                        <audio src="trading.wav"/>
                     </prompt>
                 </if>
             </filled>
@@ -64,40 +61,41 @@
 
     <form id="leaveMessages">
         <field name="confirm">
-            <grammar type="application/srgs+xml" src="/grammars/boolean.grxml"/>
             <prompt>
-                Would you like to send a message to Mark?
+                    Would you like to send a message to Mark?
             </prompt>
             <prompt>
-                To leave a message, say yes. Otherwise say no.
+                    To leave a message, say yes. Otherwise say no.
             </prompt>
             <filled>
                 <if cond="confirm">
-                    <record  name="msg" beep="true" maxtime="30s" finalsilence="4000ms" dtmfterm="true" type="audio/x-wav">
+                    <record name="msg" beep="true" maxtime="30s" finalsilence="4000ms" dtmfterm="true" type="audio/x-wav">
                         <prompt timeout="5s">
-                            Record a message after the beep.
+                                Record a message after the beep.
                         </prompt>
                         <noinput>
-                            I didn't hear anything, please try again.
+                                I didn't hear anything, please try again.
                         </noinput>
                     </record>
-                    <field name="confirmMessage">
+                    <field name="confirmMessage" type="boolean">
                         <prompt>
-                            Your message is <audio expr="msg"/>
+                                Your message is <audio expr="msg"/>
                         </prompt>
                         <prompt>
-                            To send say yes, to discard it say no.
+                                To send say yes, to discard it say no.
                         </prompt>
                         <filled>
                             <if cond="confirmMessage">
                                 <prompt>
-                                    Message send.
+                                        Message send.
                                 </prompt>
                             </if>
                         </filled>
                     </field>
                 </if>
             </filled>
+
+
         </field>
     </form>
 </vxml>
