@@ -3,7 +3,7 @@
  <form id="selling_seeds">
    <block>
    	<prompt bargein="true">You have selected that you are interested in selling seeds.</prompt>
-	<goto next="main_menu.xml"/>
+	<goto next="BSE_menu.xml"/>
    </block>
  </form>
 </vxml>
