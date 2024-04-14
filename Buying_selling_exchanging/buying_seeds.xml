@@ -1,34 +1,78 @@
 <vxml version="2.0">
-    <form id="buy_seeds_form">
-        <field name="Seeds">
-            <prompt bargein="true">You have selected that you are interested in buying seeds. We currently have three types of seeds available: Wheat, Oat, and Rye.</prompt>
-            <prompt>Please select which type of seed you want to buy.</prompt>
-            <option value="Wheat">Wheat</option>
-            <option value="Oat">Oat</option>
-            <option value="Rye">Rye</option>
-        </field>
+  <var name="selected_seed_type" expr="''"/>
+  <var name="selected_seed_amount" expr="''"/>
+  <var name="seller_phone_number" expr="'0031 6 11 22 33'"/>
 
-        <field name="amount" type="number">
-            <prompt>How much kilograms of <value expr="Seeds"/> do you want to buy?</prompt>
-        </field>
-        <prompt>You have selected that you want to buy <value expr="amount"/> kilograms of <value expr="Seeds"/>.</prompt>
+  <form id="select_seed_type">
+    <field name="seed_type_input">
+      <prompt bargein="true">You have selected that you are interested in buying seeds. We currently have three types of seeds available: Wheat, Oat, and Rye.</prompt>
+      <prompt>Please select which type of seed you want to buy.</prompt>
+      <option value="Wheat">Wheat</option>
+      <option value="Oat">Oat</option>
+      <option value="Rye">Rye</option>
+    </field>
+    <filled>
+      <assign name="selected_seed_type" expr="seed_type_input"/>   
+      <goto next="#check_seed_input"/>
+    </filled>
+  </form>
 
-        <field name="Submission">
-            <prompt>You have selected that you want to buy <value expr="amount"/> kilograms of <value expr="Seeds"/>. Do you want to submit this request? </prompt>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </field>
-	<block>
-            <if cond="Submission == 'yes'">
-                <prompt>Your request was submitted. Thank you.</prompt>
-            <elseif cond="Submission == 'no'"/>
-                <prompt>You have chosen not to proceed. Goodbye.</prompt>
-            <else/>
-                <prompt>Invalid response. Please try again.</prompt>
-            </if>
-            
-            <goto next="main_menu.xml"/>
-        </block>
+  <form id="check_seed_input">
+    <field name="check_selected_seed_type">
+      <prompt>You have selected <value expr="selected_seed_type"/>. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_seed_type == 'yes'">
+        <prompt>You have selected that you want to buy <value expr="selected_seed_type"/>.</prompt>
+        <goto next="#select_amount"/>
+      <elseif cond="check_selected_seed_type == 'no'"/>
+        <goto next="#select_seed_type"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
 
-    </form>
+  <form id="select_amount">
+    <field name="amount_input" type="number">
+      <prompt>How much kilograms of <value expr="selected_seed_type"/> do you want to buy?</prompt>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+      <filled>
+        <assign name="selected_seed_amount" expr="amount_input"/>   
+        <goto next="#check_amount"/>
+      </filled>
+    </field>
+  </form>
+
+  <form id="check_amount">
+    <field name="check_selected_amount">
+      <prompt>You have selected <value expr="selected_seed_amount"/> kilograms. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_amount == 'yes'">
+        <prompt>You have selected that you want to buy <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>.</prompt>
+        <goto next="#submission"/>
+      <elseif cond="check_selected_amount == 'no'"/>
+        <goto next="#select_amount"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
+
+  <form id="submission">
+    <prompt>Great. We have received your request to buy <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. There is a farmer in your area selling <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. You can contact them under <value expr="seller_phone_number"/>.</prompt>
+    <prompt>Here is the phone number again: <value expr="seller_phone_number"/>. Thank you for calling.</prompt>    
+  </form>
 </vxml>
