@@ -1,10 +1,199 @@
 <?xml version="1.0"?>
 <vxml version="2.0">
 
- <form id="exchanging_seeds">
-   <block>
-   	<prompt bargein="true">You have selected that you are interested in exchanging seeds.</prompt>
-	<goto next="main_menu.xml"/>
-   </block>
- </form>
+  <var name="selected_seed_type_1" expr="''"/>
+  <var name="selected_seed_type_2" expr="''"/>
+  <var name="selected_seed_amount_1" expr="''"/>
+  <var name="selected_seed_amount_2" expr="''"/>
+  <var name="selected_phone_number" expr=""/>
+
+  <form id="select_seed_type_1">
+    <field name="seed_type_input_1">
+      <prompt bargein="true">You have selected that you are interested in exchanging seeds. We currently have three types of seeds available for exchange: Wheat, Oat, and Rye.</prompt>
+      <prompt>Please select which type of seed are you interested in?</prompt>
+      <option value="Wheat">Wheat</option>
+      <option value="Oat">Oat</option>
+      <option value="Rye">Rye</option>
+    </field>
+    <filled>
+      <assign name="selected_seed_type_1" expr="seed_type_input_1"/>   
+      <goto next="#check_seed_input_1"/>
+    </filled>
+  </form>
+
+  <form id="check_seed_input_1">
+    <field name="check_selected_seed_type_1">
+      <prompt>You have selected <value expr="selected_seed_type_1"/>. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_seed_type_1 == 'yes'">
+        <prompt>You have selected that you are looking for<value expr="selected_seed_type_1"/>.</prompt>
+        <goto next="#select_amount_1"/>
+      <elseif cond="check_selected_seed_type_1 == 'no'"/>
+        <goto next="#select_seed_type_1"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
+
+  <form id="select_amount_1">
+    <field name="amount_input_1" type="number">
+      <prompt>How much kilograms of <value expr="selected_seed_type_1"/> would you like to receive?</prompt>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+      <filled>
+        <assign name="selected_seed_amount_1" expr="amount_input_1"/>   
+        <goto next="#check_amount_1"/>
+      </filled>
+    </field>
+  </form>
+
+  <form id="check_amount_1">
+    <field name="check_selected_amount_1">
+      <prompt>You have selected <value expr="selected_seed_amount_1"/> kilograms. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_amount_1 == 'yes'">
+        <prompt>You have selected that you want <value expr="selected_seed_amount_1"/> kilograms of <value expr="selected_seed_type_1"/>.</prompt>
+        <goto next="#select_seed_type_2"/>
+      <elseif cond="check_selected_amount_1 == 'no'"/>
+        <goto next="#select_amount_1"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
+
+  <form id="select_seed_type_2">
+    <field name="seed_type_input_2">
+      <prompt bargein="true">Which kinds of seeds would you be willing to trade. We are currently supporting three kinds of seeds: Wheat, Oat, and Rye.</prompt>
+      <prompt>Please select which type of seed you would trade?</prompt>
+      <option value="Wheat">Wheat</option>
+      <option value="Oat">Oat</option>
+      <option value="Rye">Rye</option>
+    </field>
+    <filled>
+      <assign name="selected_seed_type_2" expr="seed_type_input_2"/>   
+      <goto next="#check_seed_input_2"/>
+    </filled>
+  </form>
+
+  <form id="check_seed_input_2">
+    <field name="check_selected_seed_type_2">
+      <prompt>You have selected to trade <value expr="selected_seed_type_2"/>. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_seed_type_2 == 'yes'">
+        <prompt>You have selected that you would trade <value expr="selected_seed_type_2"/> seeds.</prompt>
+        <goto next="#select_amount_2"/>
+      <elseif cond="check_selected_seed_type_2 == 'no'"/>
+        <goto next="#select_seed_type_2"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
+
+  <form id="select_amount_2">
+    <field name="amount_input_2" type="number">
+      <prompt>How much kilograms of <value expr="selected_seed_type_2"/> would you be willing to exchange for <value expr="selected_seed_amount_1"/> kilograms of <value expr="selected_seed_type_1"/>?</prompt>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+      <filled>
+        <assign name="selected_seed_amount_2" expr="amount_input_2"/>   
+        <goto next="#check_amount_2"/>
+      </filled>
+    </field>
+  </form>
+
+  <form id="check_amount_2">
+    <field name="check_selected_amount_2">
+      <prompt>You have selected <value expr="selected_seed_amount_2"/> kilograms. Do you want to proceed?</prompt>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+      <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+      <if cond="check_selected_amount_2 == 'yes'">
+        <prompt>You have selected that you want <value expr="selected_seed_amount_2"/> kilograms of <value expr="selected_seed_type_2"/>.</prompt>
+        <goto next="#select_phone_number"/>
+      <elseif cond="check_selected_amount_2 == 'no'"/>
+        <goto next="#select_amount_2"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+  </form>
+
+<form id="select_phone_number">
+    <field name="input_phone_number" type="digits">
+        <prompt bargein="true">In order for people to contact you, please enter your phone number, including the country code.</prompt>
+        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+        <filled>
+            <assign name="selected_phone_number" expr="input_phone_number"/>   
+            <goto next="#check_phone_number"/>
+        </filled>
+    </field>
+</form>
+
+<form id="check_phone_number">
+    <field name="check_selected_phone_number">
+        <prompt>Your phone number is <value expr="selected_phone_number"/>. Is that correct? </prompt>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+
+    <filled>
+      <if cond="check_selected_phone_number == 'yes'">
+        <goto next ="#submission"/>
+      <elseif cond="check_selected_phone_number == 'no'"/>
+        <goto next="#select_phone_number"/>
+      <else>
+        <prompt>Invalid response. Please try again.</prompt>
+      </else>
+      </if>
+    </filled>
+</form>
+
+  <form id="submission">
+    <field name="submission_input">
+        <prompt>Great. We have received your request to exchange <value expr="selected_seed_amount_2"/> kilograms of <value expr="selected_seed_type_2"/> for <value expr="selected_seed_amount_1"/> kilograms of <value expr="selected_seed_type_1"/>. We currently do not have any exchanges available that match your request. You can submit this request so that other people can trade with you. Do you want to submit this request?</prompt>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+    </field>
+    <filled>
+        <if cond="submission_input == 'yes'">
+            <prompt>Your request was submitted. Thank you.</prompt>
+	    <goto next="main_menu.xml"/>
+        <elseif cond="submission_input == 'no'"/>
+            <prompt>You have chosen not to proceed. You will be forwarded back to the main menu.</prompt>
+            <goto next="main_menu.xml"/>
+        <else>
+            <prompt>Invalid response. Please try again.</prompt>
+	      </else>
+        </if>
+    </filled>
+</form>
 </vxml>
