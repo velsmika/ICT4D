@@ -1,0 +1,85 @@
+<vxml version="2.0">
+
+  <!-- Main Menu as a Menu Element -->
+  <menu id="mainMenu" dtmf="true">
+    <prompt>
+      Welcome to the Cereal Seed Inventory System.
+      For wheat, oat, or rye seed types, press 1.
+      For seed quantities, press 2.
+      For seed prices, press 3.
+      For additional information, press 4.
+      To return to this menu at any time, press 0.
+    </prompt>
+    <choice dtmf="1" next="#seedTypes">Seed Types</choice>
+    <choice dtmf="2" next="#seedQuantities">Seed Quantities</choice>
+    <choice dtmf="3" next="#seedPrices">Seed Prices</choice>
+    <choice dtmf="4" next="#additionalInfo">Additional Information</choice>
+    <noinput>
+      Please select an option by pressing the corresponding number.
+    </noinput>
+    <nomatch>
+      That was not a valid choice. Please try again.
+    </nomatch>
+  </menu>
+
+  <!-- Form for Seed Types -->
+  <form id="seedTypes">
+    <block>
+      <prompt>
+        We have the following types of cereal seeds available: wheat, oat, and rye.
+        Press 0 to return to the main menu.
+      </prompt>
+      <filled>
+        <goto next="#mainMenu"/>
+      </filled>
+    </block>
+  </form>
+
+  <!-- Form for Seed Quantities -->
+  <form id="seedQuantities">
+    <block>
+      <prompt>
+        Current seed stock is as follows:
+        Wheat seeds: 200 kilograms,
+        Oat seeds: 150 kilograms,
+        Rye seeds: 100 kilograms.
+        Press 0 to return to the main menu.
+      </prompt>
+      <filled>
+        <goto next="#mainMenu"/>
+      </filled>
+    </block>
+  </form>
+
+  <!-- Form for Seed Prices -->
+  <form id="seedPrices">
+    <block>
+      <prompt>
+        Seed pricing per kilogram is as follows:
+        Wheat seeds at $1.00,
+        Oat seeds at $0.80,
+        Rye seeds at $1.20.
+        Press 0 to return to the main menu.
+      </prompt>
+      <filled>
+        <goto next="#mainMenu"/>
+      </filled>
+    </block>
+  </form>
+
+  <!-- Form for Additional Information -->
+  <form id="additionalInfo">
+    <block>
+      <prompt>
+        Additional information:
+        Optimal planting for cereal seeds starts from early March to late April.
+        Consult local guidelines for best practices.
+        Press 0 to return to the main menu.
+      </prompt>
+      <filled>
+        <goto next="#mainMenu"/>
+      </filled>
+    </block>
+  </form>
+
+</vxml>
