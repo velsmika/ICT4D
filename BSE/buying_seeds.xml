@@ -73,6 +73,7 @@
 
   <form id="submission">
     <prompt>Great. We have received your request to buy <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. There is a farmer in your area selling <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. You can contact them under <value expr="seller_phone_number"/>.</prompt>
-    <prompt>Here is the phone number again: <value expr="seller_phone_number"/>. Thank you for calling.</prompt>    
+    <prompt>Here is the phone number again: <value expr="seller_phone_number"/>. Thank you for calling.</prompt>  
+    <goto next="../main_menu.xml"/>  
   </form>
 </vxml>

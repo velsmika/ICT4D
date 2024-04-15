@@ -122,7 +122,7 @@ kilograms of <value expr="selected_seed_type"/>.</prompt>
     <filled>
         <if cond="submission_input == 'yes'">
             <prompt>Your request was submitted. Thank you.</prompt>
-	    <goto next="main_menu.xml"/>
+	          <goto next="main_menu.xml"/>
         <elseif cond="submission_input == 'no'"/>
             <prompt>You have chosen not to proceed. You will be forwarded back to the main menu.</prompt>
             <goto next="main_menu.xml"/>
