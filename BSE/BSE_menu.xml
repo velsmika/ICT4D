@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <vxml version="2.0">
 
-<form id="menu0">
+<form id="BSE_welcome_prompt_">
    <block>
    	<prompt bargein="true">You have selected that you want to buy, sell, or exchange seeds.</prompt>
-	<goto next="#main"/>
+	<goto next="#BSE_menu"/>
    </block>
 </form>
 
-<menu id="main" dtmf="true">
+<menu id="BSE_menu" dtmf="true">
     <prompt>Please select one of the following categories:<enumerate/> </prompt>
     <choice dtmf="1" next="buying_seeds.xml">Buying Seeds</choice>
     <choice dtmf="2" next="selling_seeds.xml">Selling seeds.</choice>
