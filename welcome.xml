@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+
+<!--
+    <Welcome prompt and language selection. >
+-->
+
+<!--
+    Main menu.
+-->
+<menu id="main" dtmf="true">
+    <prompt>Welcome to Afri Cereal. For english press 1, voor Nederlanse pers 2. <enumerate/>
+    </prompt>
+    <choice next="english/english_main_menu.xml"> English </choice>
+    <choice next="dutch/dutch_main_menu.xml"> Nederlandse </choice>
+    <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+    <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+</menu>
+</vxml>

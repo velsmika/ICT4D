@@ -2,7 +2,7 @@
 <vxml version="2.1">
 
 <!--
-    Main menu.
+   English main menu.
 -->
 <menu id="main" dtmf="true">
     <prompt>Welcome to Afri Cereal. Your application to exchange, sell, or buy seeds. You can write or receive messages, join groups, or receive seed specific information. What would you like to do? <enumerate/>
@@ -57,7 +57,7 @@
         <filled>
             <if cond="confirm">
                 <prompt>
-                    <audio src="trading.wav"/>
+                    <audio src="audio_files/trading.wav"/>
                 </prompt>
                 <goto next="#menuMessages"/>
             </if>

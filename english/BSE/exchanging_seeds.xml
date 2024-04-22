@@ -186,10 +186,10 @@
     <filled>
         <if cond="submission_input == 'yes'">
             <prompt>Your request was submitted. Thank you.</prompt>
-	    <goto next="../main_menu.xml"/>
+	    <goto next="../english_main_menu.xml"/>
         <elseif cond="submission_input == 'no'"/>
             <prompt>You have chosen not to proceed. You will be forwarded back to the main menu.</prompt>
-            <goto next="../main_menu.xml"/>
+            <goto next="../english_main_menu.xml"/>
         <else>
             <prompt>Invalid response. Please try again.</prompt>
 	      </else>

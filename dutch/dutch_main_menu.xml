@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+
+<!--
+    Dutch main menu.
+-->
+<menu id="main" dtmf="true">
+    <prompt>Welkom bij Afri Cereal. Uw aanvraag om zaden te ruilen, verkopen of kopen. U kunt berichten schrijven of ontvangen, lid worden van groepen of zaadspecifieke informatie ontvangen. Wat zou je willen doen?<enumerate/>
+    </prompt>
+    <choice next="BSE/exchanging_seeds.xml"> Zaden uitwisselen </choice>
+    <choice next="BSE/selling_seeds.xml"> Sell seeds </choice>
+    <choice next="BSE/buying_seeds.xml"> Zaden verkopen </choice>
+    <choice next="#menuMessages"> Bekijk berichten </choice>
+    <choice next="#menuMessages"> Bericht versturen</choice>
+    <choice next="#menuGroups"> Groepen </choice>
+    <choice next="Inventory/inventory_menu.xml">Zaad informatie</choice>
+    <noinput>Sorry, dat heb ik niet begrepen.<reprompt/></noinput>
+    <nomatch>Sorry, dat komt met geen van de opties overeen.<reprompt/></nomatch>
+</menu>

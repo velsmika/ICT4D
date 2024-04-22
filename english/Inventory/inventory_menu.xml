@@ -14,7 +14,7 @@
     <choice dtmf="2" next="#seedQuantities">Seed Quantities</choice>
     <choice dtmf="3" next="#seedPrices">Seed Prices</choice>
     <choice dtmf="4" next="#additionalInfo">Additional Information</choice>
-    <choice dtmf="0" next="../main_menu.xml">Go Back</choice>
+    <choice dtmf="0" next="../english_main_menu.xml">Go Back</choice>
 
     <noinput>
       Please select an option by pressing the corresponding number.
