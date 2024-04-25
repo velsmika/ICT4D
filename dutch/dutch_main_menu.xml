@@ -5,15 +5,40 @@
     Dutch main menu.
 -->
 <menu id="main" dtmf="true">
-    <prompt>Welkom bij Afri Cereal. Uw aanvraag om zaden te ruilen, verkopen of kopen. U kunt berichten schrijven of ontvangen, lid worden van groepen of zaadspecifieke informatie ontvangen. Wat zou je willen doen?<enumerate/>
+    <prompt>
+        <audio src="audio_files/welcome/full_welcome.mp3"/>
     </prompt>
-    <choice next="BSE/exchanging_seeds.xml"> Zaden uitwisselen </choice>
-    <choice next="BSE/selling_seeds.xml"> Sell seeds </choice>
-    <choice next="BSE/buying_seeds.xml"> Zaden verkopen </choice>
-    <choice next="#menuMessages"> Bekijk berichten </choice>
-    <choice next="#menuMessages"> Bericht versturen</choice>
-    <choice next="#menuGroups"> Groepen </choice>
-    <choice next="Inventory/inventory_menu.xml">Zaad informatie</choice>
-    <noinput>Sorry, dat heb ik niet begrepen.<reprompt/></noinput>
-    <nomatch>Sorry, dat komt met geen van de opties overeen.<reprompt/></nomatch>
+
+    <choice dtmf="1" next="BSE/exchanging_seeds.xml">
+        <prompt>
+            <audio src="audio_files/welcome/zaden_uitwisselen.mp3"/> Zaden uitwisselen
+        </prompt>
+    </choice>
+
+    <choice dtmf="2" next="BSE/selling_seeds.xml">
+        <prompt>
+            <audio src="audio_files/welcome/zaden_verkopen.mp3"/> Zaden verkopen
+        </prompt>
+    </choice>
+
+    <choice dtmf="3" next="BSE/buying_seeds.xml">
+        <prompt>
+            <audio src="audio_files/welcome/zaden_kopen.mp3"/> Zaden kopen
+        </prompt>
+    </choice>
+
+    <choice dtmf="4" next="Inventory/inventory_menu.xml">
+        <prompt>
+            <audio src="audio_files/welcome/zaad_informatie.mp3"/> Zaad informatie
+        </prompt>
+    </choice>
+
+    <noinput>
+        <audio src="audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+    </noinput>
+
+    <nomatch>
+        <audio src="audio_files/sorry/geen_opties.mp3"/><reprompt/>
+    </nomatch>
 </menu>
+</vxml>
