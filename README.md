@@ -5,12 +5,15 @@ description of the local eco-system and e3 value model:
 
 The e3 value model shown below depict the business network (eco-system), the stakeholders, and how they interact and exchange value objects to make the service available.
 
---IMAGE--
+![draft 2](https://github.com/velsmika/ICT4D/assets/58292012/fb549954-3dab-4463-bf70-53c2e7164c9f)
 
-The image above can be explained as follows.
+
+The image above can be explained in terms of actors who interact with eachother and value objects.
+
 ACTORS:
 Farmers: Primary users who buy, sell, and exchange seeds. Application Creators: Responsible for the development, deployment, and maintenance of the AfrICereal application.
 --ADD TEXT HERE--
+
 VALUE EXCHANGES:
 Farmers: Exchange seeds among each other and share information regarding seed types, prices, and availability. They use the application to access these exchanges and communicate.
 Application Creators: Provide a digital platform (AfrICereal) facilitating the exchange and communication among farmers.
