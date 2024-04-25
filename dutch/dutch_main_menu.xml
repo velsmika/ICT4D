@@ -6,7 +6,7 @@
 -->
 <menu id="main" dtmf="true">
     <prompt>
-        <audio src="audio_files/welcome/full_welcome.mp3"/>
+        <audio src="audio_files/welcome/full_welcome2.mp3"/>
     </prompt>
 
     <choice dtmf="1" next="BSE/exchanging_seeds.xml">

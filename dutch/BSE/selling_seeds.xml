@@ -1,135 +1,115 @@
 <?xml version="1.0"?>
 <vxml version="2.0">
 
-<var name="selected_seed_type" expr="'undefined'"/>
-<var name="selected_seed_amount" expr=""/>
-<var name="selected_phone_number" expr=""/>
-
 <form id="select_seed_type">
     <field name="seed_type_input">
-    <prompt bargein="true">You have selected that you are interested in selling seeds. We are currently supporting three types of seeds: Sorgho, Millet, and Petit mil.</prompt>
-    <prompt>Please select which type of seed you want to sell.</prompt>
+    <prompt bargein="true"><audio src="../audio_files/BSE/selling/selling_intro.mp3"/></prompt>
+
     <option value="Sorgho"> Sorgho </option>
     <option value="Millet"> Millet </option>
     <option value="Petit mil">Petit mil</option>
-    <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-    <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+
+    <noinput>
+        <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+        <reprompt/>
+    </noinput>
+
+    <nomatch>
+        <audio src="../audio_files/sorry/geen_opties.mp3"/>
+        <reprompt/>
+    </nomatch>
     </field>
 
     <filled>
       <assign name="selected_seed_type" expr="seed_type_input"/>   
-      <goto next="#check_seed_input"/>
+      <goto next="#select_amount"/>
     </filled>
 </form>
 
-<form id="check_seed_input">
-    <field name="check_selected_seed_type">
-        <prompt>You have selected <value expr="selected_seed_type"/>.Do you want to proceed? </prompt>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
-    </field>
-
-    <filled>
-      <if cond="check_selected_seed_type == 'yes'">
-	      <prompt>You have selected that you want to sell <value expr="selected_seed_type"/>.</prompt>
-        <goto next="#select_amount"/>
-      <elseif cond="check_selected_seed_type == 'no'"/>
-        <goto next="#select_seed_type"/>
-      <else>
-        <prompt>Invalid response. Please try again.</prompt>
-      </else>
-      </if>
-    </filled>
-</form>
 
 <form id="select_amount">
       <field name="amount_input" type="number">
-            <prompt>How much kilograms of <value expr="selected_seed_type"/> do you want to sell?</prompt>
-            <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-            <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+
+            <prompt><audio src="../audio_files/BSE/selling/amount_seed.mp3"/></prompt>
+
+            <noinput>
+              <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+              <reprompt/>
+            </noinput>
+
+            <nomatch>
+                <audio src="../audio_files/sorry/geen_opties.mp3"/>
+                <reprompt/>
+            </nomatch>
 
             <filled>
                 <assign name="selected_seed_amount" expr="amount_input"/>   
-                <goto next="#check_amount"/>
+                <goto next="#select_phone_number"/>
             </filled>
-        </field>
-</form>
-<form id="check_amount">
-    <field name="check_selected_amount">
-        <prompt>You have selected <value expr="selected_seed_amount"/> kilograms. Do you want to proceed? </prompt>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
-    </field>
 
-    <filled>
-      <if cond="check_selected_amount == 'yes'">
-        <prompt>You have selected that you want to sell <value expr="selected_seed_amount"/> 
-kilograms of <value expr="selected_seed_type"/>.</prompt>
-        <goto next="#select_phone_number"/>
-      <elseif cond="check_selected_amount == 'no'"/>
-        <goto next="#select_amount"/>
-      <else>
-        <prompt>Invalid response. Please try again.</prompt>
-      </else>
-      </if>
-    </filled>
+        </field>
 </form>
 
 <form id="select_phone_number">
     <field name="input_phone_number" type="digits">
-        <prompt bargein="true">In order for people to contact you, please enter your phone number, including the country code.</prompt>
-        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
+        <prompt bargein="true"><audio src="../audio_files/BSE/selling/telephone_number.mp3"/></prompt>
+            <noinput>
+              <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+              <reprompt/>
+            </noinput>
+
+            <nomatch>
+              <audio src="../audio_files/sorry/geen_opties.mp3"/>
+              <reprompt/>
+            </nomatch>
         <filled>
             <assign name="selected_phone_number" expr="input_phone_number"/>   
-            <goto next="#check_phone_number"/>
+            <goto next="#recordMessage"/>
         </filled>
     </field>
 </form>
 
-<form id="check_phone_number">
-    <field name="check_selected_phone_number">
-        <prompt>Your phone number is <value expr="selected_phone_number"/>. Is that correct? </prompt>
+
+<form id="recordMessage">
+    <record name="msg" beep="true" maxtime="30s" finalsilence="4000ms" dtmfterm="true" type="audio/x-wav">
+        <prompt timeout="5s"><audio src="../audio_files/BSE/selling/thanks_for_phone.mp3"/></prompt>
+        <noinput><audio src="../audio_files/BSE/selling/I_didnt_hear.mp3"/></noinput>
+        </record>
+    <field name="confirmMessage">
+        <prompt><audio src="../audio_files/BSE/selling/your_message_is.mp3"/> <audio expr="msg"/></prompt>
+        <prompt><audio src="../audio_files/BSE/selling/submit_yes_no.mp3"/></prompt>
         <option value="yes">Yes</option>
         <option value="no">No</option>
-        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
-    </field>
+        <noinput>
+            <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+            <reprompt/>
+        </noinput>
 
-    <filled>
-      <if cond="check_selected_phone_number == 'yes'">
-        <goto next ="#submission"/>
-      <elseif cond="check_selected_phone_number == 'no'"/>
-        <goto next="#select_phone_number"/>
-      <else>
-        <prompt>Invalid response. Please try again.</prompt>
-      </else>
-      </if>
-    </filled>
-</form>
-
-<form id="submission">
-    <field name="submission_input">
-        <prompt>Great. We have received your request to sell <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. If someone is interested in buying your seeds, they will be able to contact you under <value expr="selected_phone_number"/>. Do you want to submit this request?</prompt>
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-        <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
-        <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
+        <nomatch>
+            <audio src="../audio_files/sorry/geen_opties.mp3"/>
+            <reprompt/>
+        </nomatch>
     </field>
     <filled>
-        <if cond="submission_input == 'yes'">
-            <prompt>Your request was submitted. Thank you.</prompt>
-	          <goto next="../english_main_menu.xml"/>
-        <elseif cond="submission_input == 'no'"/>
-            <prompt>You have chosen not to proceed. You will be forwarded back to the main menu.</prompt>
-            <goto next="../english_main_menu.xml"/>
+        <if cond="confirmMessage == 'yes'">
+            <prompt><audio src="../audio_files/BSE/selling/submitted.mp3"/></prompt>
+            <goto next="../dutch_main_menu.xml" />
+        <elseif cond="confirmMessage == 'no'"/>
+            <prompt><audio src="../audio_files/BSE/selling/discarded.mp3"/></prompt>
+            <goto next="#recordMessage"/>
         <else>
-            <prompt>Invalid response. Please try again.</prompt>
-	</else>
+            <noinput>
+              <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+              <reprompt/>
+            </noinput>
+
+            <nomatch>
+              <audio src="../audio_files/sorry/geen_opties.mp3"/>
+              <reprompt/>
+            </nomatch>
+        </else>
         </if>
     </filled>
+
 </form>
 </vxml>

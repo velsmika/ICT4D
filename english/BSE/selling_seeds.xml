@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <vxml version="2.0">
 
-<var name="selected_seed_type" expr="'undefined'"/>
-<var name="selected_seed_amount" expr=""/>
-<var name="selected_phone_number" expr=""/>
-
 <form id="select_seed_type">
     <field name="seed_type_input">
-    <prompt bargein="true">You have selected that you are interested in selling seeds. We are currently supporting three types of seeds: Sorgho, Millet, and Petit mil.</prompt>
+    <prompt bargein="true">You have selected that you are interested in selling seeds. 
+    In order to process your request correctly, we would like to ask you to first provide us with the following information:
+    The type of seed you are interested in, the quantity you are interested in, and telephone number.
+    Subsequently we would like you to record a message after the beep so that other people can contact you.
+    We are currently supporting three types of seeds: Sorgho, Millet, and Petit mil.</prompt>
     <prompt>Please select which type of seed you want to sell.</prompt>
     <option value="Sorgho"> Sorgho </option>
     <option value="Millet"> Millet </option>
@@ -24,7 +24,7 @@
 
 <form id="check_seed_input">
     <field name="check_selected_seed_type">
-        <prompt>You have selected <value expr="selected_seed_type"/>.Do you want to proceed? </prompt>
+        <prompt>You have selected <value expr="selected_seed_type"/>. Is that correct? </prompt>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
@@ -33,10 +33,10 @@
 
     <filled>
       <if cond="check_selected_seed_type == 'yes'">
-	      <prompt>You have selected that you want to sell <value expr="selected_seed_type"/>.</prompt>
+	      <prompt> Thank you for providing the seed type you would like to sell. Next we would like to know the seed quantity.</prompt>
         <goto next="#select_amount"/>
       <elseif cond="check_selected_seed_type == 'no'"/>
-        <goto next="#select_seed_type"/>
+        <goto next="#check_seed_input"/>
       <else>
         <prompt>Invalid response. Please try again.</prompt>
       </else>
@@ -46,7 +46,7 @@
 
 <form id="select_amount">
       <field name="amount_input" type="number">
-            <prompt>How much kilograms of <value expr="selected_seed_type"/> do you want to sell?</prompt>
+            <prompt>How much kilograms of seeds do you want to sell?</prompt>
             <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
             <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
 
@@ -58,7 +58,7 @@
 </form>
 <form id="check_amount">
     <field name="check_selected_amount">
-        <prompt>You have selected <value expr="selected_seed_amount"/> kilograms. Do you want to proceed? </prompt>
+        <prompt>You have selected <value expr="selected_seed_amount"/> kilograms. Is that correct? </prompt>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
@@ -67,8 +67,7 @@
 
     <filled>
       <if cond="check_selected_amount == 'yes'">
-        <prompt>You have selected that you want to sell <value expr="selected_seed_amount"/> 
-kilograms of <value expr="selected_seed_type"/>.</prompt>
+        <prompt>Thank you for providing the seed type you would like to sell. Next we would like to know your phone number.</prompt>
         <goto next="#select_phone_number"/>
       <elseif cond="check_selected_amount == 'no'"/>
         <goto next="#select_amount"/>
@@ -81,7 +80,7 @@ kilograms of <value expr="selected_seed_type"/>.</prompt>
 
 <form id="select_phone_number">
     <field name="input_phone_number" type="digits">
-        <prompt bargein="true">In order for people to contact you, please enter your phone number, including the country code.</prompt>
+        <prompt bargein="true">Please enter your phone number, including the country code.</prompt>
         <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
         <filled>
             <assign name="selected_phone_number" expr="input_phone_number"/>   
@@ -101,7 +100,8 @@ kilograms of <value expr="selected_seed_type"/>.</prompt>
 
     <filled>
       <if cond="check_selected_phone_number == 'yes'">
-        <goto next ="#submission"/>
+        <prompt>Thank you for providing your phone number. Next we would like to ask you to record a message so that other people can contact you. Please record a message that includes your Name, the Seed type you are interested in, the seed quantity you are interested in, your location, and telephone number.</prompt>
+        <goto next ="#recordMessage"/>
       <elseif cond="check_selected_phone_number == 'no'"/>
         <goto next="#select_phone_number"/>
       <else>
@@ -111,25 +111,31 @@ kilograms of <value expr="selected_seed_type"/>.</prompt>
     </filled>
 </form>
 
-<form id="submission">
-    <field name="submission_input">
-        <prompt>Great. We have received your request to sell <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. If someone is interested in buying your seeds, they will be able to contact you under <value expr="selected_phone_number"/>. Do you want to submit this request?</prompt>
+<form id="recordMessage">
+    <record name="msg" beep="true" maxtime="30s" finalsilence="4000ms" dtmfterm="true" type="audio/x-wav">
+        <prompt timeout="5s">Record a message after the beep.</prompt>
+        <noinput>I didn't hear anything, please try again.</noinput>
+        </record>
+    <field name="confirmMessage">
+        <prompt>Your message is <audio expr="msg"/></prompt>
+        <prompt>To submit your request say yes, to discard it say no.</prompt>
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <noinput>Sorry, I didn't catch that.<reprompt/></noinput>
         <nomatch>Sorry, that does not match any of the options.<reprompt/></nomatch>
     </field>
     <filled>
-        <if cond="submission_input == 'yes'">
-            <prompt>Your request was submitted. Thank you.</prompt>
-	          <goto next="../english_main_menu.xml"/>
-        <elseif cond="submission_input == 'no'"/>
-            <prompt>You have chosen not to proceed. You will be forwarded back to the main menu.</prompt>
-            <goto next="../english_main_menu.xml"/>
+        <if cond="confirmMessage == 'yes'">
+            <prompt>Your request was submitted.</prompt>
+            <goto next="../dutch_main_menu.xml" />
+        <elseif cond="confirmMessage == 'no'"/>
+            <prompt>Your message has been discarded.</prompt>
+            <goto next="#recordMessage"/>
         <else>
             <prompt>Invalid response. Please try again.</prompt>
-	</else>
+        </else>
         </if>
     </filled>
+
 </form>
 </vxml>
