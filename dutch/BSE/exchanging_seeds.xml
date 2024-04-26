@@ -9,7 +9,7 @@
 
 <form id="select_seed_type_1">
   <field name="seed_type_input_1">
-  <prompt bargein="true"><audio src="../audio_files/BSE/exchanging/exchange_intro.mp3"/></prompt>
+  <prompt bargein="true"><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/exchange_intro/"/></prompt>
     <option value="Sorgho"> Sorgho </option>
     <option value="Millet"> Millet </option>
     <option value="Petit mil">Petit mil</option>
@@ -22,14 +22,14 @@
 
 <form id="select_amount_1">
   <field name="amount_input_1" type="number">
-    <prompt><audio src="../audio_files/BSE/exchanging/how_much_receive.mp3"/></prompt>
+    <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/hmr/"/></prompt>
     <noinput>
-        <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/>
         <reprompt/>
     </noinput>
 
     <nomatch>
-        <audio src="../audio_files/sorry/geen_opties.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/>
         <reprompt/>
     </nomatch>
     <filled>
@@ -41,7 +41,7 @@
 
 <form id="select_seed_type_2">
   <field name="seed_type_input_2">
-    <prompt bargein="true"><audio src="../audio_files/BSE/exchanging/seed_type_give.mp3"/></prompt>
+    <prompt bargein="true"><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/stg/"/></prompt>
     <option value="Sorgho"> Sorgho </option>
     <option value="Millet"> Millet </option>
     <option value="Petit mil">Petit mil</option>
@@ -54,14 +54,14 @@
 
 <form id="select_amount_2">
   <field name="amount_input_2" type="number">
-    <prompt><audio src="../audio_files/BSE/exchanging/how_much_give.mp3"/></prompt>
+    <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/hmg/"/></prompt>
     <noinput>
-        <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/>
         <reprompt/>
     </noinput>
 
     <nomatch>
-        <audio src="../audio_files/sorry/geen_opties.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/>
         <reprompt/>
     </nomatch>
     <filled>
@@ -73,14 +73,14 @@
   
 <form id="select_phone_number">
   <field name="input_phone_number" type="digits">
-      <prompt bargein="true"><audio src="../audio_files/BSE/selling/telephone_number.mp3"/></prompt>
+      <prompt bargein="true"><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/tn/"/></prompt>
           <noinput>
-            <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/>
             <reprompt/>
           </noinput>
 
           <nomatch>
-            <audio src="../audio_files/sorry/geen_opties.mp3"/>
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/>
             <reprompt/>
           </nomatch>
       <filled>
@@ -92,33 +92,33 @@
 
 <form id="recordMessage">
   <record name="msg" beep="true" maxtime="30s" finalsilence="4000ms" dtmfterm="true" type="audio/x-wav">
-      <prompt timeout="5s"><audio src="../audio_files/BSE/selling/thanks_for_phone.mp3"/></prompt>
-      <noinput><audio src="../audio_files/BSE/selling/I_didnt_hear.mp3"/></noinput>
+      <prompt timeout="5s"><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/tfp/"/></prompt>
+      <noinput><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/i_didnt_hear/"/></noinput>
       </record>
   <field name="confirmMessage">
-      <prompt><audio src="../audio_files/BSE/selling/your_message_is.mp3"/> <audio expr="msg"/></prompt>
-      <prompt><audio src="../audio_files/BSE/selling/submit_yes_no.mp3"/></prompt>
+      <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/ymi/"/> <audio expr="msg"/></prompt>
+      <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/submit_yes_no/"/></prompt>
       <option value="yes">Yes</option>
       <option value="no">No</option>
       <noinput>
-          <audio src="../audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+          <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/>
           <reprompt/>
       </noinput>
 
       <nomatch>
-          <audio src="../audio_files/sorry/geen_opties.mp3"/>
+          <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/>
           <reprompt/>
       </nomatch>
   </field>
   <filled>
       <if cond="confirmMessage == 'yes'">
-          <prompt><audio src="../audio_files/BSE/selling/submitted.mp3"/></prompt>
+          <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/submitted/"/></prompt>
           <goto next="../dutch_main_menu.xml" />
       <elseif cond="confirmMessage == 'no'"/>
-          <prompt><audio src="../audio_files/BSE/selling/discarded.mp3"/></prompt>
+          <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/discarded/"/></prompt>
           <goto next="#recordMessage"/>
       <else>
-          <prompt><audio src="../audio_files/sorry/niet_begrepen.mp3"/></prompt>
+          <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/></prompt>
       </else>
       </if>
   </filled>

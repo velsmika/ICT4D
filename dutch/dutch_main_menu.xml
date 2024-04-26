@@ -6,39 +6,39 @@
 -->
 <menu id="main" dtmf="true">
     <prompt>
-        <audio src="audio_files/welcome/full_welcome2.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/full_welc2/"/>
     </prompt>
 
     <choice dtmf="1" next="BSE/exchanging_seeds.xml">
         <prompt>
-            <audio src="audio_files/welcome/zaden_uitwisselen.mp3"/> Zaden uitwisselen
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/zaad_wissel/"/> Zaden uitwisselen
         </prompt>
     </choice>
 
     <choice dtmf="2" next="BSE/selling_seeds.xml">
         <prompt>
-            <audio src="audio_files/welcome/zaden_verkopen.mp3"/> Zaden verkopen
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/zaad_verkoop/"/> Zaden verkopen
         </prompt>
     </choice>
 
     <choice dtmf="3" next="BSE/buying_seeds.xml">
         <prompt>
-            <audio src="audio_files/welcome/zaden_kopen.mp3"/> Zaden kopen
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/zaad_kopen/"/> Zaden kopen
         </prompt>
     </choice>
 
     <choice dtmf="4" next="Inventory/inventory_menu.xml">
         <prompt>
-            <audio src="audio_files/welcome/zaad_informatie.mp3"/> Zaad informatie
+            <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/zaad_info/"/> Zaad informatie
         </prompt>
     </choice>
 
     <noinput>
-        <audio src="audio_files/sorry/niet_begrepen.mp3"/><reprompt/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/>
     </noinput>
 
     <nomatch>
-        <audio src="audio_files/sorry/geen_opties.mp3"/><reprompt/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/><reprompt/>
     </nomatch>
 </menu>
 </vxml>

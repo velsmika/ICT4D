@@ -3,7 +3,7 @@
   <!-- Main Menu as a Menu Element -->
   <menu id="inventory_menu" dtmf="true">
     <prompt>
-        <audio src="../audio_files/inventory/inventory_welcome.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/inventory_welco/"/>
     </prompt>
     <choice dtmf="1" next="#seedTypes">zaadsoorten</choice>
     <choice dtmf="2" next="#seedQuantities">zaadhoeveelheden</choice>
@@ -12,12 +12,12 @@
     <choice dtmf="0" next="../dutch_main_menu.xml">terug</choice>
 
     <noinput>
-        <audio src="../audio_files/sorry/niet_begrepen.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/>
         <reprompt/>
     </noinput>
 
     <nomatch>
-        <audio src="../audio_files/sorry/geen_opties.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/>
         <reprompt/>
     </nomatch>
   </menu>
@@ -26,7 +26,7 @@
   <form id="seedTypes">
     <block>
       <prompt>
-        <audio src="../audio_files/inventory/seed_types.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/seed_types/"/>
       </prompt>
       <goto next="#inventory_menu"/>
     </block>
@@ -36,7 +36,7 @@
   <form id="seedQuantities">
     <block>
       <prompt>
-        <audio src="../audio_files/inventory/seed_quantities.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/seed_quan/"/>
       </prompt>
       <goto next="#inventory_menu"/>
     </block>
@@ -46,7 +46,7 @@
   <form id="seedPrices">
     <block>
       <prompt>
-        <audio src="../audio_files/inventory/seed_prices.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/seed_prices/"/>
       </prompt>
       <goto next="#inventory_menu"/>
     </block>
@@ -56,7 +56,7 @@
   <form id="additionalInfo">
     <block>
       <prompt>
-        <audio src="../audio_files/inventory/additional_info.mp3"/>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/additional_info/"/>
       </prompt>
       <goto next="#inventory_menu"/>
     </block>

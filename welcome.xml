@@ -9,11 +9,11 @@
     Main menu.
 -->
 <menu id="main" dtmf="true">
-    <prompt>Welcome to Afri Cereal. For english press 1, for dutch press 2.<audio src="dutch//audio_files/welcome/language_selection.mp3"/> <enumerate/>
+    <prompt>Welcome to Afri Cereal. For english press 1, for dutch press 2.<audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/lang_selec/"/> <enumerate/>
     </prompt>
     <choice next="english/english_main_menu.xml"></choice>
     <choice next="dutch/dutch_main_menu.xml"></choice>
-    <noinput>Sorry, I didn't catch that. <audio src="dutch/audio_files/sorry/niet_begrepen.mp3"/><reprompt/></noinput>
-    <nomatch>Sorry, that does not match any of the options.<audio src="dutch/audio_files/sorry/geen_opties.mp3"/><reprompt/></nomatch>
+    <noinput>Sorry, I didn't catch that. <audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/niet_begrepen/"/><reprompt/></noinput>
+    <nomatch>Sorry, that does not match any of the options.<audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/geen_opties/"/><reprompt/></nomatch>
 </menu>
 </vxml>
