@@ -1,4 +1,4 @@
-description of the prototype:
+Description on how to use the prototype:
 --ADD TEXT HERE--
 
 description of the local eco-system and e3 value model:
