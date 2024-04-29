@@ -1,5 +1,9 @@
-Description on how to use the prototype:
---ADD TEXT HERE--
+How to Run
+
+Download Skype: Install Skype on your device.
+Call: Dial the following number: +1 (800) 289-5570.
+Enter Pin: When prompted, enter the following pin: 9996100506.
+Run Application: Once you've entered the pin, the application should start running.
 
 description of the local eco-system and e3 value model:
 
