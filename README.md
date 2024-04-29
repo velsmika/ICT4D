@@ -1,42 +1,45 @@
-How to Run
+# Project Name
 
-Download Skype: Install Skype on your device.
-Call: Dial the following number: +1 (800) 289-5570.
-Enter Pin: When prompted, enter the following pin: 9996100506.
-Run Application: Once you've entered the pin, the application should start running.
+## Description
+Brief description of your project goes here.
 
-description of the local eco-system and e3 value model:
+## How to Run
+1. **Download Skype:** Install Skype on your device.
+2. **Call:** Dial the following number: +1 (800) 289-5570.
+3. **Enter Pin:** When prompted, enter the following pin: 9996100506.
+4. **Run Application:** Once you've entered the pin, the application should start running.
 
-The e3 value model shown below depict the business network (eco-system), the stakeholders, and how they interact and exchange value objects to make the service available.
+## Description of the Local Eco-system and e3 Value Model
+The e3 value model shown below depicts the business network (eco-system), the stakeholders, and how they interact and exchange value objects to make the service available.
 
-![draft 2](https://github.com/velsmika/ICT4D/assets/58292012/fb549954-3dab-4463-bf70-53c2e7164c9f)
+![e3 Value Model](https://github.com/velsmika/ICT4D/assets/58292012/fb549954-3dab-4463-bf70-53c2e7164c9f)
 
+The image above can be explained in terms of actors who interact with each other and value objects.
 
-The image above can be explained in terms of actors who interact with eachother and value objects.
+### Actors:
+- Farmers: Primary users who buy, sell, and exchange seeds.
+- Application Creators: Responsible for the development, deployment, and maintenance of the AfrICereal application.
+- Certification Agency: Not currently implemented, responsible for certifying farmer's seeds.
+- Application: Provides service to farmers, serviced by developers, connects farmers with certification agencies.
 
-ACTORS:
-Farmers: Primary users who buy, sell, and exchange seeds. Application Creators: Responsible for the development, deployment, and maintenance of the AfrICereal application. Certification agency: Not currently implemented, responsible for certifying farmer's seeds. Application: Provides service to farmers, serviced by developers, conncets farmers with certification agencies.
+### Value Exchanges:
+- Farmers: Exchange seeds among each other and share information regarding seed types, prices, and availability. They use the application to access these exchanges and communicate. They pay the developers via the application. They provide seeds to the agencies.
+- Application Creators: Provide a digital platform (AfrICereal) facilitating the exchange and communication among farmers. Receive payments via the application from the farmers.
+- Certification Agency: Receive seeds from the farmers and return the certified seeds.
 
-VALUE EXCHANGES:
-Farmers: Exchange seeds among each other and share information regarding seed types, prices, and availability. They use the application to access these exchanges and communicate. They pay the developers via the application. They provide seeds to the agencies.
-Application Creators: Provide a digital platform (AfrICereal) facilitating the exchange and communication among farmers. Receive payments via the application from the farmers.
-Certification agency: receive seeds from the farmers and return the certified seeds.
+### Value Objects:
+- Seeds: Different types like sorghum, millet, and petit mil.
+- Information: Details about seed types, prices, and availability.
+- Access to Market: The application provides farmers access to a broader market.
+- Certification Services: Offered by the certification agencies to ensure seed quality (planned for future implementation).
+- Technical Support and Updates: Provided by the application creators to maintain the system functionality.
+- Money: Paid by the farmers to allow the application to exist and be maintained.
 
-VALUE OBJECTS:
-Seeds: Different types like sorgho, millet, and petit mil.
-Information: Details about seed types, prices, and availability.
-Access to Market: The application provides farmers access to a broader market.
-Certification Services: Offered by the certification agencies to ensure seed quality (planned for future implementation).
-Technical Support and Updates: Provided by the application creators to maintain the system functionality.
-Money: payed by the farmers to allow the application to exist and be maintained.
+### Market Segment:
+- The primary target market segment: Farmers in Rural Mali, includes those in isolated communities.
+- Potential Expansion to Other Regions: Future market segments as the application grows.
 
-MARKET SEGMENT:
-The primary target market segment: Farmers in Rural Mali, includes those in isolated communities.
-Potential Expansion to Other Regions: Future market segments as the application grows.
-
-CONNECTIONS AND INTERACTIONS:
-Farmers: Direct interactions with each other and the application.
-Direct interaction with the certification agencies. Indirect interaction with the developers.
-Application Creators and Farmers: Continuous interaction for feedback, updates, and support. Direct interaction with the application.
-Indirect interaction with the farmers.
-certification agency: Direct interaction with the farmers. Passive interaction with the application, that refers farmers more easily to the agencies.
+### Connections and Interactions:
+- Farmers: Direct interactions with each other and the application. Direct interaction with the certification agencies. Indirect interaction with the developers.
+- Application Creators and Farmers: Continuous interaction for feedback, updates, and support. Direct interaction with the application. Indirect interaction with the farmers.
+- Certification Agency: Direct interaction with the farmers. Passive interaction with the application, that refers farmers more easily to the agencies.
