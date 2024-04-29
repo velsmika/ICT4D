@@ -1,4 +1,4 @@
-# Project Name
+# AfriCereal
 
 ## Description
 The AfrICereal application is a digital platform designed to facilitate the exchange and communication among farmers in rural Mali. It serves as a centralized hub where farmers can buy, sell, and exchange seeds, as well as share vital information such as seed types, prices, and availability. The primary goal of AfrICereal is to empower farmers in isolated communities by providing them with a user-friendly tool to enhance their agricultural practices and improve their livelihoods.
