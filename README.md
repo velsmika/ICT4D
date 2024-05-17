@@ -12,7 +12,9 @@ The AfrICereal application is a digital platform designed to facilitate the exch
 ## Description of the Local Eco-system and e3 Value Model
 The e3 value model shown below depicts the business network (eco-system), the stakeholders, and how they interact and exchange value objects to make the service available.
 
-![e3 Value Model](https://github.com/velsmika/ICT4D/assets/58292012/fb549954-3dab-4463-bf70-53c2e7164c9f)
+![e3 Value Model](![image](https://github.com/velsmika/ICT4D/assets/58292012/10b28d67-770d-4e2b-9f14-06474e69cb20)
+)
+
 
 The image above can be explained in terms of actors who interact with each other and value objects.
 
