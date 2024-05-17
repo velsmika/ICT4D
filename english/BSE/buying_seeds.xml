@@ -61,7 +61,7 @@
 <filled>
     <if cond="check_selected_amount == 'yes'">
  <prompt>Great. We have received your request to buy <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. There is a farmer in your area selling <value expr="selected_seed_amount"/> kilograms of <value expr="selected_seed_type"/>. You can contact them under <value expr="seller_phone_number"/>. Here is the phone number again: <value expr="seller_phone_number"/>. Thank you for calling.</prompt> 
-    <goto next="../english_main_menu.xml"/>
+    <goto next="#audio_recordings_amount"/>
     <elseif cond="check_selected_amount == 'no'"/>
     <goto next="#select_amount"/>
     <else>
@@ -72,27 +72,13 @@
 </form>
 
 <form id="audio_recordings_amount">
-    <data name="recordings_amount_call" src="https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/en/" method="get"/>
-    <var name="recordings_amount" expr="recordings_amount_call.amount"/>
-    <if cond="recordings_amount > 0">
-        <goto next="#audio_recordings"/>
-        <else>
-            <goto next="../english_main_menu.xml"/>
-        </else>
-    </if>
-</form>
-
-<form id="audio_recordings">
-    <prompt>
-        <audio src="'https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/en/' + recordings_amount"/>
-    </prompt>
-    <assign name="recordings_amount" expr="recordings_amount - 1"/>
-    <if cond="recordings_amount > 0">
-        <goto next="#audio_recordings"/>
-        <else>
-            <goto next="../english_main_menu.xml"/>
-        </else>
-    </if>
+   <prompt>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/en/1"/>
+   </prompt>
+   <prompt>
+        <audio src="https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/en/2"/>
+   </prompt>
+   <goto next="../english_main_menu.xml"/>
 </form>
 
 </vxml>

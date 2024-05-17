@@ -75,7 +75,7 @@
     <filled>
         <if cond="confirmMessage == 'yes'">
             <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/submitted/"/></prompt>
-            <goto next="../dutch_main_menu.xml" />
+            <goto next="#audio_recordings_amount" />
         <elseif cond="confirmMessage == 'no'"/>
             <prompt><audio src="https://ict4d-2454f1ef329b.herokuapp.com/menuAudio/nl/discarded/"/></prompt>
             <goto next="#recordMessage"/>
@@ -86,4 +86,14 @@
     </filled>
 
 </form>
+
+<form id="audio_recordings_amount">
+    <prompt>
+         <audio src="https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/nl/1"/>
+    </prompt>
+    <prompt>
+         <audio src="https://ict4d-2454f1ef329b.herokuapp.com/farmeraudio/nl/2"/>
+    </prompt>
+    <goto next="../dutch_main_menu.xml.xml"/>
+ </form>
 </vxml>
